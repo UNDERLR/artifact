@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: hsl(0, 0%, 20%);
+            }
+            iframe {
+                transform: scale(1.4) translate(-15%);
+            }
+        </style>
+    </head>
+    <body>
+        <iframe src="index.html" id="main" allowfullscreen scrolling="false" frameborder="0"></iframe>
+        <script>
+            let iframe = document.getElementById("main");
+            iframe.style.width = window.innerWidth + "px";
+            iframe.style.height = (window.innerWidth / 16) * 6 + "px";
+        </script>
+    </body>
+</html>

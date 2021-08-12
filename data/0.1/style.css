@@ -1,0 +1,529 @@
+* {
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
+
+    font-family: SourceHanSansCN-Medium, serif;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ede5d8;
+    width: 500px;
+    min-height: 100px;
+    padding: 50px;
+    font-size: 30px;
+}
+
+@font-face {
+    font-family: SourceHanSansCN-Medium;
+    src: url(font/SourceHanSansCN-Medium-2.otf);
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: hsl(0, 0%, 30%);
+}
+
+#main {
+    position: relative;
+
+    background-color: hsl(0, 0%, 100%);
+    background-image: url("img/bg.png");
+    background-size: 100% 100%;
+
+    z-index: 1;
+}
+
+#backpack {
+
+    height: inherit;
+    width: inherit;
+
+    position: absolute;
+
+    backdrop-filter: blur(25px);
+    background-color: hsla(0, 0%, 0%, 0.1);
+    z-index: 1;
+
+    display: flex;
+}
+
+#levelupButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#levelupButton > button {
+    width: inherit;
+    height: inherit;
+    font-size: 40px;
+    background-color: #ede5d8;
+    border: none;
+
+    border-radius: 50px;
+}
+
+#fullscreen {
+    position: fixed;
+    left: 1em;
+    top: 1em;
+
+    width: 2em;
+    height: 2em;
+
+    z-index: 10;
+
+    background-color: hsl(0, 0%, 80%);
+
+    border-radius: .2em;
+}
+
+#fullscreen > svg {
+    width: inherit;
+    height: inherit;
+}
+
+#artifactList {
+    overflow-y: scroll;
+
+}
+
+.artifact {
+    position: relative;
+    overflow: hidden;
+
+    width: 130px;
+    height: 170px;
+
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 70%);
+    background-repeat: no-repeat;
+
+    display: inline-block;
+
+    margin: 10px;
+}
+
+.artifact.five {
+    background-image: url("img/iconbg.png");
+    background-size: 350% auto;
+    background-position: -150px -195px;
+}
+
+.artifact.four {
+    background-image: url("img/iconbg.png");
+    background-size: 350% auto;
+    background-position: -10px -195px;
+}
+
+.artifact > .artifactLevel {
+    position: absolute;
+    bottom: -10px;
+
+    width: inherit;
+    height: 30px;
+
+    background-color: #e8e5e0;
+    font-size: 24px;
+    color: hsl(0, 0%, 30%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artifactImg {
+    width: inherit;
+    height: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artifactImg > img {
+    width: 75%;
+    transform: translateY(-5px);
+}
+
+.artifactQuality {
+    width: inherit;
+    height: 30px;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: translate(5px, -60%);
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+
+    background-image: url("img/star.png");
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    transform: scale(1.6);
+}
+
+/*=-=-=-=-=-=-*/
+
+#backpackArtifactView {
+    background-color: #ede5d8;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#backpackArtifactView > * {
+    width: inherit;
+}
+
+.artifactName {
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    padding-left: 30px;
+    height: 70px;
+    background-color: #bc6a32;
+    color: white;
+}
+
+.artifactStatRoil {
+    padding-left: 30px;
+    position: relative;
+    background-color: #a67650;
+    height: 280px;
+}
+
+.artifactInfo {
+    flex: 1;
+}
+
+.artifactPiece {
+    margin-top: 15px;
+    font-size: 30px;
+    color: white;
+}
+
+.artifactStatRoilName {
+    color: hsla(0, 0%, 100%, 0.5);
+    font-size: 30px;
+    margin-top: 70px;
+}
+
+.artifactStatRoilValue {
+    font-size: 60px;
+    color: white;
+    line-height: 1.1em;
+}
+
+.artifactStatRoilQuality {
+    width: 50%;
+    transform: translate(20px, 25px);
+}
+
+.artifactStatRoilQuality > .star {
+    display: inline-block;
+    margin-right: 30px;
+    transform: scale(3);
+}
+
+.artifactInfo {
+    padding: 30px;
+    font-size: 30px;
+}
+
+.artifactLevel {
+    display: inline-block;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #3b4453;
+    margin-bottom: 10px;
+}
+
+.artifactSubStatRoil li {
+    margin: 15px 30px;
+    color: hsla(0, 0%, 0%, 0.8);
+}
+
+.artifactSetName {
+    color: #63bd6b;
+}
+
+.artifactInfo > .artifactPiece {
+    color: hsla(0, 0%, 30%, 0.8);
+    padding-left: 1em;
+}
+
+.artifactInfo > .artifactPiece > div {
+    margin: 10px 0;
+    line-height: 1.2em;
+}
+
+.artifactImgView {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    width: auto;
+    height: 80%;
+}
+
+/*-=-=-=-=-=-=-=-=-*/
+
+#levelUP {
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-image: url("img/levelupBg.png");
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#levelUP > header {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    height: 100px;
+}
+
+#levelUP > header > #artifactNameAndPieces {
+    position: absolute;
+    left: 120px;
+    color: rgb(206, 192, 143);
+    font-size: 26px;
+}
+
+#levelUP > header > .exitButton {
+    position: absolute;
+    right: 45px;
+    width: 60px;
+    height: 60px;
+}
+
+#levelUP > main {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+main > #levelUPArtifactImg {
+    position: absolute;
+    left: 25%;
+    width: 250px;
+    height: 250px;
+}
+
+main > #levelUPArtifactImg > img {
+    width: inherit;
+    height: inherit;
+}
+
+main > #artifactStatRoilInfo {
+    width: 35%;
+    height: 100%;
+    position: absolute;
+    right: 3%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+#artifactStatRoilInfo > * {
+    width: 100%;
+}
+
+#artifactLevel {
+    position: relative;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+#artifactLevel > #artifactLevelNumber {
+    position: relative;
+    height: 90px;
+}
+
+#artifactLevel > #artifactLevelNumber > #level {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    font-size: 32px;
+}
+
+#artifactLevel > #artifactLevelNumber > #EXP {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    font-size: 28px;
+    color: rgb(231, 165, 252);
+}
+
+#artifactLevel > #artifactExp {
+    width: inherit;
+    flex: 1;
+    position: relative;
+}
+
+#artifactLevel > #artifactExp > div:first-child {
+    position: absolute;
+    display: inline-block;
+    background-color: rgb(26, 20, 12);
+    color: rgb(231, 165, 252);
+    padding: 2px;
+    border-radius: 5px;
+}
+
+#artifactLevel > #artifactExp > #artifactExpBar {
+    top: 5px;
+    right: 0;
+    width: 95%;
+    position: absolute;
+    height: 10px;
+    background-color: rgba(113, 86, 129, 0.5);
+    overflow: hidden;
+}
+
+
+#artifactLevel > #artifactExp > #artifactExpBar > div {
+    left: 0;
+    height: inherit;
+    width: 50%;
+    background-color: rgb(231, 165, 252);
+}
+
+/*-=-=-*/
+#artifactStatRoilInfo > #artifactStatRoil li {
+    font-size: 30px;
+    height: 60px;
+    background-image: linear-gradient(90deg, transparent, hsla(0, 0%, 0%, 0.2), transparent);
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    position: relative;
+}
+
+#artifactStatRoilInfo > #artifactStatRoil li span {
+    right: 0;
+    position: absolute;
+}
+
+#artifactStatRoilInfo > #artifactStatRoil li:first-child {
+    font-size: 34px;
+    height: 80px;
+
+}
+
+#artifactStatRoil {
+    height: 400px;
+}
+
+/*-=-=--=-=-=-=-*/
+
+#artifactLevelUp {
+    height: 400px;
+}
+
+#artifactLevelUpControl {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#artifactLevelUpControl > button {
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    background-color: #ede5d8;
+    margin: 10px;
+    flex: 1;
+    font-size: 36px;
+}
+
+#artifactLevelUp {
+    overflow: hidden;
+}
+
+#artifactLevelUpList {
+    display: flex;
+    overflow-x: scroll;
+}
+
+#artifactLevelUpList > #artifactAdd {
+    display: flex;
+    width: 130px;
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: hsl(0, 0%, 70%);
+    border-radius: 10px;
+    margin: 0 5px;
+}
+
+#artifactLevelUpList > #LevelUpList {
+    display: flex;
+    height: 170px;
+
+}
+
+#artifactLevelUpList > #LevelUpList > div {
+    width: 130px;
+    height: 170px;
+    margin: 0 5px;
+}
+
+#artifactLevelUpList > #artifactAdd > svg {
+    fill: hsl(0, 0%, 40%);
+    width: 100px;
+    height: 100px;
+}
+
+/*-=-=-*/
+
+#artifactLevelUpStart {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+#artifactLevelUpStart > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 80px;
+    margin: 10px;
+    font-size: 36px;
+}
+
+#startButton > button {
+    font-size: 36px;
+    border-radius: 40px;
+    border: none;
+    background-color: #ede5d8;
+    width: 100%;
+    height: 100%;
+}

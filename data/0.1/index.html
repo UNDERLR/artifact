@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>圣遗物模拟器</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<section id="main">
+    <section id="backpack">
+        <section id="artifactList"></section>
+        <section id="backpackArtifactView">
+            <div class="artifactName">磐陀裂生之花</div>
+            <div class="artifactStatRoil">
+                <div class="artifactPiece">生之花</div>
+                <div class="artifactStatRoilName">生命值</div>
+                <div class="artifactStatRoilValue">4,780</div>
+                <div class="artifactStatRoilQuality">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+                <img src="img/artifact/archaic_petra_4.png" alt="磐陀裂生之花" class="artifactImgView">
+            </div>
+            <div class="artifactInfo">
+                <div class="artifactLevel">+20</div>
+                <div class="artifactSubStatRoil">
+                    <ul>
+                        <li>防御力 +35</li>
+                        <li>防御力 +35</li>
+                        <li>防御力 +3</li>
+                    </ul>
+                </div>
+                <div class="artifactSetName">悠古的磐岩：</div>
+                <div class="artifactPiece">
+                    <div class="twoPiece">2件套：获得15%岩元素伤害加成。</div>
+                    <div class="fourPiece">4件套：获得结晶反应形成的晶片时，队伍中所有角色获得35%对应元素伤害加成，持续10秒。同时只能通过该效果获得一种元素伤害加成。</div>
+                </div>
+            </div>
+        </section>
+        <section id="levelupButton">
+            <button onclick="winOnTop(1)">强化</button>
+        </section>
+    </section>
+    <section id="levelUP">
+        <header>
+            <div id="artifactNameAndPieces">
+                生之花 / 夏祭之花
+            </div>
+            <div class="exitButton"
+                 id="levelUPExitButton"></div>
+        </header>
+        <main>
+            <div id="levelUPArtifactImg">
+                <img src="" alt="">
+            </div>
+            <div id="artifactStatRoilInfo">
+                <div id="artifactLevel">
+                    <div id="artifactLevelNumber">
+                        <div id="level"></div>
+                        <div id="EXP"></div>
+                    </div>
+                    <div id="artifactExp">
+                        <div>EXP</div>
+                        <div id="artifactExpBar">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="artifactStatRoil">
+                    <ul>
+                    </ul>
+                </div>
+                <div id="artifactLevelUp">
+                    <div id="artifactLevelUpControl">
+                        <button id="artifactAutoAdd" onclick="">
+                            快速填充
+                        </button>
+                        <button id="artifactAddTool">工具</button>
+                    </div>
+                    <div id="artifactLevelUpList">
+                        <div id="LevelUpList"></div>
+                        <div id="artifactAdd" onclick="winOnTop(2);document.getElementById('WINs').style.opacity=1;">
+                            <svg t="1628676350125" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" p-id="2050" width="200" height="200">
+                                <path d="M590.769231 571.076923h324.923077c15.753846 0 29.538462-13.784615 29.538461-29.538461v-59.076924c0-15.753846-13.784615-29.538462-29.538461-29.538461H590.769231c-11.815385 0-19.692308-7.876923-19.692308-19.692308V108.307692c0-15.753846-13.784615-29.538462-29.538461-29.538461h-59.076924c-15.753846 0-29.538462 13.784615-29.538461 29.538461V433.230769c0 11.815385-7.876923 19.692308-19.692308 19.692308H108.307692c-15.753846 0-29.538462 13.784615-29.538461 29.538461v59.076924c0 15.753846 13.784615 29.538462 29.538461 29.538461H433.230769c11.815385 0 19.692308 7.876923 19.692308 19.692308v324.923077c0 15.753846 13.784615 29.538462 29.538461 29.538461h59.076924c15.753846 0 29.538462-13.784615 29.538461-29.538461V590.769231c0-11.815385 7.876923-19.692308 19.692308-19.692308z"
+                                      p-id="2051"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="artifactLevelUpStart">
+                        <div id="needCoin"><img style="height: inherit" alt="摩拉" src="img/mora.png">0</div>
+                        <div id="startButton">
+                            <button>强化</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <section id="WINs" style="width: 100%;height: 100%;background-color: hsl(0,0%,20%)">
+        <div class="window" id="addExp">
+            <label for="EXPInput">添加经验：<input id="EXPInput" type="number" step="1" min="1" max="100000"></label>
+            <button onclick="addExp();winOnTop(1)">确定</button>
+        </div>
+    </section>
+</section>
+<div id="fullscreen" onclick="full()">
+    <svg t="1628513851513" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         p-id="1185" width="200" height="200">
+        <path d="M628.053333 628.053333a32 32 0 0 1 45.226667 0l158.72 158.634667V693.333333l0.298667-4.352A32 32 0 0 1 896 693.333333v181.333334l-0.341333 3.84a21.333333 21.333333 0 0 1-20.992 17.493333h-181.333334l-4.352-0.298667a32 32 0 0 1-27.648-31.701333l0.298667-4.352a32 32 0 0 1 31.701333-27.648h93.44l-158.72-158.72-3.114666-3.584a32 32 0 0 1 3.114666-41.642667z m-232.106666 0a32 32 0 0 1 3.114666 41.642667l-3.114666 3.584-158.72 158.72h93.44a32 32 0 0 1 31.701333 27.648l0.298667 4.352a32 32 0 0 1-27.648 31.701333L330.666667 896H149.333333a21.333333 21.333333 0 0 1-20.992-17.493333L128 874.666667v-181.333334a32 32 0 0 1 63.701333-4.352l0.298667 4.352v93.354667l158.72-158.634667a32 32 0 0 1 45.226667 0zM874.666667 128a21.333333 21.333333 0 0 1 20.992 17.493333L896 149.333333v181.333334a32 32 0 0 1-63.701333 4.352L832 330.666667V237.312L673.28 395.946667a32 32 0 0 1-48.341333-41.642667l3.114666-3.584 158.72-158.72h-93.44a32 32 0 0 1-31.701333-27.648L661.333333 160a32 32 0 0 1 27.648-31.701333L693.333333 128h181.333334zM330.666667 128l4.352 0.298667a32 32 0 0 1 27.648 31.701333l-0.298667 4.352a32 32 0 0 1-31.701333 27.648H237.226667l158.72 158.72 3.114666 3.584a32 32 0 0 1-48.341333 41.642667L192 237.312V330.666667l-0.298667 4.352A32 32 0 0 1 128 330.666667V149.333333l0.341333-3.84A21.333333 21.333333 0 0 1 149.333333 128h181.333334z"
+              p-id="1186"></path>
+    </svg>
+</div>
+</body>
+<script src="js/data.js"></script>
+<script src="index.js"></script>
+</html>
